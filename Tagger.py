@@ -284,5 +284,68 @@ async def mentionall(tagadmin):
 		sleep(0.5)
 
 
+Proqramlaşdırma = " ".split("Python C## C JavaScript Php Node.js Roby C++")
+
+
+@client.on(events.NewMessage(pattern="^/ptag ?(.*)"))
+async def mentionall(event):
+  global anlik_calisan
+  if event.is_private:
+    return await event.respond("**Bu əmri gruplar və kanallar üçün keçərli❗**")
+  
+  admins = []
+  async for admin in client.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins):
+    admins.append(admin.id)
+  if not event.sender_id in admins:
+    return await event.respond("**Bu əmri sadəcə yöneticilər işlədə bilir〽️**")
+  
+  if event.pattern_match.group(1):
+    mode = "text_on_cmd"
+    msg = event.pattern_match.group(1)
+  elif event.reply_to_msg_id:
+    mode = "text_on_reply"
+    msg = event.reply_to_msg_id
+    if msg == None:
+        return await event.respond("**Geçmiş mesajlar için etiket ede bilmiom**")
+  elif event.pattern_match.group(1) and event.reply_to_msg_id:
+    return await event.respond("Etiket etmək üçün səbəb yoxdur❗️")
+  else:
+    return await event.respond("**Etiketə Başlamaq üçün səbəb yazın...!**")
+  
+  if mode == "text_on_cmd":
+    anlik_calisan.append(event.chat_id)
+    usrnum = 0
+    usrtxt = ""
+    async for usr in client.iter_participants(event.chat_id):
+      usrnum += 1
+      usrtxt += f"[{random.choice(emoji)}](tg://user?id={usr.id}) "
+      if event.chat_id not in anlik_calisan:
+        await event.respond("** Etiket işi uğurla durduruldu❌**")
+        return
+      if usrnum == 5:
+        await client.send_message(event.chat_id, f"{usrtxt}\n\n{msg}")
+        await asyncio.sleep(2)
+        usrnum = 0
+        usrtxt = ""
+        
+  
+  if mode == "text_on_reply":
+    anlik_calisan.append(event.chat_id)
+ 
+    usrnum = 0
+    usrtxt = ""
+    async for usr in client.iter_participants(event.chat_id):
+      usrnum += 1
+      usrtxt += f"[{random.choice(emoji)}](tg://user?id={usr.id}) "
+      if event.chat_id not in anlik_calisan:
+        await event.respond("Tag Uğurla Durduruldu\n\n**Buda sizin reklamınız ola bilər @ghrmnlj**❌")
+        return
+      if usrnum == 5:
+        await client.send_message(event.chat_id, usrtxt, reply_to=msg)
+        await asyncio.sleep(2)
+        usrnum = 0
+        usrtxt = ""
+
+
 print(">> Bot işləyir maraqlanma🚀 @ghrmnlj məlumat alabilərsən <<")
 client.run_until_disconnected()
