@@ -32,6 +32,7 @@ async def start(event):
                       [Button.url('Rəsmi Kanal📣', 'https://t.me/MerlinUserBot')],
 		      [Button.url('Developer👨🏻‍💻', 'https://t.me/ghrmnlj')],
                     ),
+
                     link_preview=False
                    )
 @client.on(events.NewMessage(pattern="^/help$"))
@@ -43,7 +44,9 @@ async def help(event):
                       [Button.url('Support👨‍💻', 'https://t.me/BotSupportAz')],
                       [Button.url('Rəsmi Kanal🔖', 'https://t.me/MerlinUserBot')],
 		      [Button.url('Developer🧑‍🔧', 'https://t.me/ghmnlj')],
-                    ),
+                      [Button.url ('Canavar🐺'), 'https://t.me/Nasibow
+                  ),
+
                     link_preview=False
                    )
 	
