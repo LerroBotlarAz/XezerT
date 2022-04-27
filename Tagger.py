@@ -284,7 +284,7 @@ async def mentionall(tagadmin):
 		sleep(0.5)
 
 
-Proqramlaşdırma = " ".split("Python C## C JavaScript Php Node.js Roby C++")
+Proqramlaşdırma = ("Python C## C JavaScript Php Node.js Roby C++")
 
 
 @client.on(events.NewMessage(pattern="^/ptag ?(.*)"))
