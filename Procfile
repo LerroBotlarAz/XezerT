@@ -1,1 +1,1 @@
-worker: python3 Tagger.py
+worker: python3 Tagger.pyy
