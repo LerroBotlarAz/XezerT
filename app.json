@@ -5,7 +5,7 @@
   "env": {
     "TOKEN": {
       "description": "@botfather Vasitesi ile Ala Bilersen(Gerekli)",
-      "value": ""
+      "value": "7407093716:AAGL9qtX7h6PSu0wWGiWbfnYH8puWat51UA"
     },
     "APP_ID": {
       "description": " my.telegram.org vasitesi ile ala bilersen (Gerekli)",
